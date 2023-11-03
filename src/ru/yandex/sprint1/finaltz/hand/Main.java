@@ -53,5 +53,4 @@ public class Main {
     private int charToInt(char t) {
         return t >= '0' && t <= '9' ? t - '0' : -1;
     }
-
 }

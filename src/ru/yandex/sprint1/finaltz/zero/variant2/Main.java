@@ -30,7 +30,6 @@ public class Main {
                 int value = Integer.parseInt(stringArrTokenizer.nextToken());
                 list[j++] = value == 0 ? value : length;
             }
-
             for (int i = 1; i < list.length; i++) {
                 list[i] = list[i] == 0 ? 0 : list[i - 1] + 1;
             }
