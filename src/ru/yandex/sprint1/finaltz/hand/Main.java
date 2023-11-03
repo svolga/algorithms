@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.stream.IntStream;
 
-// ID посылки: 95477575
+// ID посылки: 95758726
 // Посылка: https://contest.yandex.ru/contest/22450/submits/
 // B. Ловкость рук
 // https://contest.yandex.ru/contest/22450/problems/B/

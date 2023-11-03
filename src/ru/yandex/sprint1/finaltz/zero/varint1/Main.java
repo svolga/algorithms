@@ -1,4 +1,4 @@
-package ru.yandex.sprint1.finaltz.hand.zero.varint1;
+package ru.yandex.sprint1.finaltz.zero.varint1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
