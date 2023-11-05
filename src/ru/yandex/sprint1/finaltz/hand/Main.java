@@ -12,9 +12,9 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    private static final int colCount = 4;
-    private static final int rowCount = 4;
-    private static final int personCount = 2;
+    private static final int COL_COUNT = 4;
+    private static final int ROW_COUNT = 4;
+    private static final int PERSON_COUNT = 2;
 
     public static void main(String[] args) throws IOException {
         new Main().run();
@@ -23,7 +23,7 @@ public class Main {
     private void run() throws IOException {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            int k = personCount * Integer.parseInt(reader.readLine());
+            int k = PERSON_COUNT * Integer.parseInt(reader.readLine());
 
             int [] data = getIntData(reader);
 
@@ -38,9 +38,9 @@ public class Main {
     private int[] getIntData(BufferedReader reader) throws IOException {
         int[] digitsCount = new int[10];
 
-        for (int i = 0; i < rowCount; i++) {
+        for (int i = 0; i < ROW_COUNT; i++) {
             String row = reader.readLine();
-            for (int j = 0; j < colCount; j++) {
+            for (int j = 0; j < COL_COUNT; j++) {
                 int value = charToInt(row.charAt(j));
                 if (value > 0) {
                     digitsCount[value] += 1;
