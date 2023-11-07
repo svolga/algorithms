@@ -17,7 +17,7 @@ class Node {
 class Main {
     static void printLinkedList(Node vertex) {
         while (vertex != null) {
-            System.out.print(vertex.value + " -> ");
+            System.out.print(vertex.value + " --> ");
             vertex = vertex.next;
         }
         System.out.println("None");
