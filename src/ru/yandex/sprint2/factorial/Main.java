@@ -1,5 +1,6 @@
 package ru.yandex.sprint2.factorial;
 
+// Факториал через рекурсию и цикл
 public class Main {
 
     public static int factorial(int n) {
