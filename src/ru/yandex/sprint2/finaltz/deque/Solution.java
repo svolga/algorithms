@@ -44,39 +44,44 @@ public class Solution {
 
     private void run(String[] args) {
         readInput();
+
+        StringBuilder stringBuilder = new StringBuilder();
         Deque deque = new Deque(capacity);
+
         for (Command command : commands) {
             switch (command.operand) {
                 case "push_front":
                     if (deque.isFull()) {
-                        System.out.println("error");
+                        stringBuilder.append("error").append(System.lineSeparator());
                     } else {
                         deque.push_front(command.param);
                     }
                     break;
                 case "pop_front":
                     if (deque.isEmpty()) {
-                        System.out.println("error");
+                        stringBuilder.append("error").append(System.lineSeparator());
                     } else {
-                        System.out.println(deque.pop_front());
+                        stringBuilder.append(deque.pop_front()).append(System.lineSeparator());
                     }
                     break;
                 case "push_back":
                     if (deque.isFull()) {
-                        System.out.println("error");
+                        stringBuilder.append("error").append(System.lineSeparator());
                     } else {
                         deque.push_back(command.param);
                     }
                     break;
                 case "pop_back":
                     if (deque.isEmpty()) {
-                        System.out.println("error");
+                        stringBuilder.append("error").append(System.lineSeparator());
                     } else {
-                        System.out.println(deque.pop_back());
+                        stringBuilder.append(deque.pop_back()).append(System.lineSeparator());
                     }
                     break;
             }
         }
+
+        System.out.println(stringBuilder);
     }
 
     class Command {
