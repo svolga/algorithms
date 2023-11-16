@@ -168,8 +168,7 @@ public class Solution {
         }
 
         public void print() {
-            String strDeque = Arrays.toString(deque);
-            System.out.println(strDeque);
+            System.out.println(Arrays.toString(deque));
         }
     }
 }
