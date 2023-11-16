@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+// Номер посылки: 97611947
+// Посылка: https://contest.yandex.ru/contest/22781/run-report/97611947/
 // B. Калькулятор - обратная польская нотация
 // https://contest.yandex.ru/contest/22781/problems/B/
 
