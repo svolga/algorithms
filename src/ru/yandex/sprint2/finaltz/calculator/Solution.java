@@ -3,14 +3,32 @@ package ru.yandex.sprint2.finaltz.calculator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
-// Номер посылки: 97611947
-// Посылка: https://contest.yandex.ru/contest/22781/run-report/97611947/
+// Номер посылки: 97896438
+// Посылка: https://contest.yandex.ru/contest/22781/run-report/97896438/
 // B. Калькулятор - обратная польская нотация
 // https://contest.yandex.ru/contest/22781/problems/B/
+/*
+-- ПРИНЦИП РАБОТЫ --
+Для реализации калькулятора с обратной польской нотацией использовался стек.
+При разборе элементов строки с заданием, числа размещаются в стеке, при встрече математического оператора из стека
+извлекаются два последних операнда и производится вычисление.
+При этом результат также записывается в стек. По окончании вычислений в стеке остается одно значение,
+которое является ответом.
+Рассмотрим пример.
+Пусть дана строка: 3 2 + 6 -
+Алгоритм работы со строкой представлен в качестве примера на схеме по шагам:
+https://joxi.ru/ZrJqxgVswXW8QA
+
+-- ВРЕМЕННАЯ СЛОЖНОСТЬ --
+Добавление и удаление элементов из стека выполняются за константное время O(1)
+
+-- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
+Количество элементов, размещенных в стеке в худшем случае равно количеству всех чисел (n),
+поэтому пространственная сложность составляет O(n).
+ */
 
 public class Solution {
 
@@ -30,12 +48,13 @@ public class Solution {
             return 0;
         }
 
-        Stack stack = new Stack();
+        Stack<Integer> stack = new Stack<>();
         while (stringTokenizer.hasMoreElements()) {
             String element = stringTokenizer.nextToken();
 
-            if (isNumber(element)) {
-                stack.push(Integer.valueOf(element));
+            Integer number = parseInt(element);
+            if (number != null) {
+                stack.push(number);
             } else {
                 int result = 0;
                 int val1 = stack.pop();
@@ -74,39 +93,17 @@ public class Solution {
     }
 
     private int divide(int a, int b) {
-        return a > 0 ? a / b : (int) Math.floor(1.0 * a / b);
+        return (int) Math.floor((double) a / b);
     }
 
-    private boolean isNumber(String value) {
+    private Integer parseInt(String value) {
         if (value == null) {
-            return false;
+            return null;
         }
         try {
-            Integer.parseInt(value);
+            return Integer.parseInt(value);
         } catch (NumberFormatException ex) {
-            return false;
+            return null;
         }
-        return true;
-    }
-}
-
-
-class Stack {
-    List<Integer> items;
-
-    public Stack() {
-        this.items = new ArrayList<>();
-    }
-
-    public void push(Integer item) {
-        items.add(item);
-    }
-
-    public Integer pop() {
-        return items.remove(items.size() - 1);
-    }
-
-    public boolean isEmpty() {
-        return items.isEmpty();
     }
 }
