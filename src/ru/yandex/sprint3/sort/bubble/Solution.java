@@ -18,7 +18,6 @@ public class Solution {
     }
 
     private void bubbleSort(int[] array) {
-
         boolean isSorted = false;
         while (!isSorted) {
             isSorted = true;
@@ -31,9 +30,6 @@ public class Solution {
                 }
             }
         }
-
-
-
     }
 
 }
