@@ -24,9 +24,12 @@ package ru.yandex.sprint3.finaltz.effectquicksort;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.StringTokenizer;
+import java.util.concurrent.ThreadLocalRandom;
 
 class InPlaceQuickSort<T> {
 
@@ -84,11 +87,15 @@ class InPlaceQuickSort<T> {
 public class Solution {
 
     public static void main(String[] args) {
+/*
         try {
             new Solution().run(args);
+            new Solution().test();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+ */
+        new Solution().test();
     }
 
     private void run(String[] args) throws IOException {
@@ -97,6 +104,32 @@ public class Solution {
         InPlaceQuickSort<User> qsort = new InPlaceQuickSort<>(userComparator);
         qsort.quickSort(users, 0, users.length - 1);
         print(users);
+    }
+
+    private void test() {
+//        Integer[] array = {4, 6, 56, 2, 55, 8, 96, 34, 1, 6, 7};
+
+        int count = 10_000_000;
+        Integer[] array = new Integer[count];
+        for (int i = 0; i<count; i++){
+            array[i] = ThreadLocalRandom.current().nextInt(0, 100);
+        }
+
+
+        Comparator<Integer> comparator = (o1, o2) -> o1 - o2;
+        InPlaceQuickSort<Integer> qsort = new InPlaceQuickSort<>(comparator);
+
+        long t1 = System.currentTimeMillis();
+
+        qsort.quickSort(array, 0, array.length - 1);
+
+        long t2 = System.currentTimeMillis();
+
+        System.out.println("time is: " + (t2 - t1));
+
+//        System.out.println(Arrays.toString(array));
+
+
     }
 
     private Comparator<User> getUserComparator() {
