@@ -13,34 +13,44 @@ public class Main {
     public static void main(String[] args) throws IOException {
         new Main().run(args);
     }
-    private int getSum(int n) {
-        int result = 1;
-        if (n == 0 || n == 1) {
-            return result;
-        }
-        result = getSum(n - 1) + getSum(n - 2);
-        return result;
-    }
-
-    private int getMod(int value, int powerValue) {
-        int power = (int) Math.pow(10, powerValue);
-        int result = value % power;
-        return result;
-    }
 
     private void run(String[] args) throws IOException {
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             StringTokenizer stringTokenizer = new StringTokenizer(reader.readLine());
-
-            int n = Integer.valueOf(stringTokenizer.nextToken());
-            int k = Integer.valueOf(stringTokenizer.nextToken());
-
-            int commitCount = getSum(n);
-            int result = getMod(commitCount, k);
-
-            System.out.println(result);
+            int n = Integer.parseInt(stringTokenizer.nextToken());
+            int k = Integer.parseInt(stringTokenizer.nextToken());
+            System.out.println(calculate(n, k));
         }
+    }
+
+    private int pow(int value, int powValue) {
+        int result = 1;
+        for (int i = 1; i <= powValue; i++) {
+            result = result * value;
+        }
+        return result;
+    }
+
+    private int calculate(int number, int powerValue) {
+        int power = pow(10, powerValue);
+        int current = 0;
+        int prevprev = 0;
+        int prev = 1;
+
+        for (int i = 0; i <= number + 1; i++) {
+
+            if (i == 0 || i == 1) {
+                current = i;
+            } else {
+                current = prevprev + prev;
+                current = current % power;
+            }
+            prevprev = prev;
+            prev = current;
+        }
+        return current;
     }
 
 }
