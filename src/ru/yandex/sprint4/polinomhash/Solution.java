@@ -15,14 +15,15 @@ public class Solution {
     private void run(String[] args) throws IOException {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
- /*           int a = 123; // основание
-            String str = "HaSH"; // hash -> 6080 ; HaSH -> 56156
-            int m = 100003;
-*/
+            int a = 3; // основание
+            String str = "ABACB"; // hash -> 6080 ; HaSH -> 56156
+            int m = 256;
+
+/*
             int a = Integer.parseInt(reader.readLine());
             int m = Integer.parseInt(reader.readLine());
             String str = reader.readLine();
-
+*/
             long h = hash(str, a, m);
             System.out.println(h);
         }
@@ -35,4 +36,5 @@ public class Solution {
         }
         return h;
     }
+
 }
