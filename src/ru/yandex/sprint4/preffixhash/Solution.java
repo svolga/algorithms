@@ -53,12 +53,12 @@ public class Solution {
 //        print(h);
 
         listBoundary.forEach(boundary -> {
-            long hashSubString = getHashSubstring(a, h, pow, m, str.length(), boundary.getLeft(), boundary.getRight());
+            long hashSubString = getHashSubstring(a, h, pow, m, boundary.getLeft(), boundary.getRight());
             System.out.println(hashSubString);
         });
     }
 
-    long getHashSubstring(int a, long[] h, long[] pow, int mod, int n, int l, int r) {
+    long getHashSubstring(int a, long[] h, long[] pow, int m, int l, int r) {
         return (h[r] - h[l - 1] * pow[r - l + 1] % m + m) % m;
     }
 
