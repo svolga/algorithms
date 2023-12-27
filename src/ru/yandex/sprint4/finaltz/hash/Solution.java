@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
-// Номер посылки: 103711375
-// Посылка: https://contest.yandex.ru/contest/24414/run-report/103711375/
+// Номер посылки: 103849711
+// Посылка: https://contest.yandex.ru/contest/24414/run-report/103849711/
 // B. Хеш-таблица
 // https://contest.yandex.ru/contest/24414/problems/B/
 /*
@@ -25,8 +25,7 @@ import java.util.StringTokenizer;
 
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
 Для хранения данных используется O(n) памяти
-
- */
+*/
 
 public class Solution {
 
@@ -81,7 +80,7 @@ public class Solution {
         System.out.println(sb);
     }
 
-    class Node<K, V> {
+    private class Node<K, V> {
         K key;
         V value;
         Node<K, V> next;
@@ -127,21 +126,19 @@ public class Solution {
         public V get(K key) {
             int index = getBucket(key);
             Node<K, V> head = data.get(index);
-            return findElement(head, key);
+            Node<K, V> findNode = findElement(head, key);
+            return findNode != null ? findNode.value : null;
         }
 
         @Override
         public void put(K key, V value) {
             int index = getBucket(key);
-            int hashCode = key.hashCode();
             Node<K, V> head = data.get(index);
 
-            while (head != null) {
-                if (head.key.equals(key)) {
-                    head.value = value;
-                    return;
-                }
-                head = head.next;
+            Node<K, V> findNode = findElement(head, key);
+            if (findNode != null) {
+                findNode.value = value;
+                return;
             }
 
             head = data.get(index);
@@ -157,10 +154,10 @@ public class Solution {
             return removeElement(head, key, index);
         }
 
-        private V findElement(Node<K, V> head, K key) {
+        private Node<K, V> findElement(Node<K, V> head, K key) {
             while (head != null) {
                 if (head.key.equals(key))
-                    return head.value;
+                    return head;
                 head = head.next;
             }
 
@@ -168,25 +165,12 @@ public class Solution {
         }
 
         private V removeElement(Node<K, V> head, K key, int index) {
-            Node<K, V> prev = null;
-            while (head != null) {
-                if (head.key.equals(key)) {
-                    break;
-                }
-                prev = head;
-                head = head.next;
-            }
-
-            if (head == null) {
+            head = findElement(head, key);
+            if (head == null){
                 return null;
             }
 
-            if (prev != null) {
-                prev.next = head.next;
-            } else {
-                data.set(index, head.next);
-            }
-
+            data.set(index, head.next);
             return head.value;
         }
     }
