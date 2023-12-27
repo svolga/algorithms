@@ -14,8 +14,8 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-// Номер посылки: 103733072
-// Посылка: https://contest.yandex.ru/contest/24414/run-report/103733072/
+// Номер посылки: 103854542
+// Посылка: https://contest.yandex.ru/contest/24414/run-report/103854542/
 // A. Поисковая система
 // https://contest.yandex.ru/contest/24414/problems/A/
 /*
@@ -33,14 +33,15 @@ import java.util.TreeSet;
 При выводе ограничиваем документы
 
 -- ВРЕМЕННАЯ СЛОЖНОСТЬ --
- n - количество документов, m -число запросов.
- Построение индекса - О(n).
+ n - количество документов, k - количество слов в документе, m -число запросов,
+ Построение индекса - произведение кол-ва документов на кол-во слов О(n k).
  Построение запросов - О(m).
- Поиск - O(m)
+ Поиск - вклад во временную сложность дает сам поиск, проход по документам и сортировка документов в TreeSet через компаратор O(log n),
+ в итоге общая сложность составляет O (m n log n)
 
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
 Для построения поискового индекса и хранения запросов требуется О(n+m) памяти
- */
+*/
 
 public class Solution {
 
@@ -49,7 +50,6 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         new Solution().run(args);
     }
-
 
     private void run(String[] args) throws IOException {
 
@@ -108,7 +108,7 @@ public class Solution {
 
 class Request {
 
-    Map<Integer, Set<String>> requests;
+    private final Map<Integer, Set<String>> requests;
 
     public Request() {
         requests = new HashMap<>();
@@ -155,7 +155,7 @@ class DocumentRelevanceStorage {
 
     Comparator<DocRelevance> comparator = (dr1, dr2) -> {
         if (dr1.getRelevance() == dr2.getRelevance()) {
-            return dr1.docId - dr2.docId;
+            return dr1.getDocId() - dr2.getDocId();
         } else {
             return dr2.getRelevance() - dr1.getRelevance();
         }
@@ -187,8 +187,8 @@ class DocumentRelevanceStorage {
 }
 
 class DocRelevance {
-    int docId;
-    int relevance;
+    private final int docId;
+    private final int relevance;
 
     public DocRelevance(int docId, int relevance) {
         this.docId = docId;
