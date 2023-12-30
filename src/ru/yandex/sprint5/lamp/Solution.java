@@ -43,8 +43,6 @@ public class Solution {
     public static int treeSolution(Node head) {
         // Your code
         // “ヽ(´▽｀)ノ”
-//        System.out.println("value = " + head.value);
-
         if (head == null){
             return 0;
         }
@@ -78,7 +76,6 @@ public class Solution {
         }
 
         printTree(root);
-
         int x = treeSolution(root);
         System.out.println(x);
     }
