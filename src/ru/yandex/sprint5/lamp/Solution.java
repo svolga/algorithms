@@ -43,7 +43,7 @@ public class Solution {
     public static int treeSolution(Node head) {
         // Your code
         // “ヽ(´▽｀)ノ”
-        if (head == null){
+        if (head == null) {
             return 0;
         }
 
@@ -52,11 +52,11 @@ public class Solution {
         int leftMax = treeSolution(head.left);
         int rightMax = treeSolution(head.right);
 
-        if (leftMax > max){
+        if (leftMax > max) {
             max = leftMax;
         }
 
-        if (rightMax > max){
+        if (rightMax > max) {
             max = rightMax;
         }
 
@@ -105,6 +105,22 @@ public class Solution {
         }
     }
 
+    Node insertNode(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+
+        if (key < root.value) {
+            root.left = insertNode(root.left, key);
+        } else if (key >= root.value) {
+            root.right = insertNode(root.right, key);
+        }
+
+        return root;
+    }
+
+
     private void printTree(Node node) {
         if (node.left != null) {
             printTree(node.left);
@@ -115,5 +131,20 @@ public class Solution {
         }
     }
 
+    private Node findNode(Node root, int value) {
+
+        if (root == null || value == root.value){
+            return root;
+        }
+
+        if (value < root.value) {
+            return findNode(root.left, value);
+        }
+        else if (value > root.value) {
+            return findNode(root.right, value);
+        }
+
+        return null;
+    }
 
 }
