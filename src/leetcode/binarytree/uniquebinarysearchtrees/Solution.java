@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 // 96. Unique Binary Search Trees
 // https://leetcode.com/problems/unique-binary-search-trees/description/
+//  количество различных BST- это каталонское число
 // F(n) = (2*n)!/((n+1)!*n!)
 public class Solution {
 
