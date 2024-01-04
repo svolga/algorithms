@@ -1,4 +1,4 @@
-package ru.yandex.sprint5.tree;
+package ru.yandex.sprint5.tree.base;
 
 import java.util.ArrayList;
 import java.util.List;
