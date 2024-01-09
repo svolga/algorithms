@@ -10,14 +10,11 @@ public class Solution {
     }
 
     private void run(String[] args) {
-
-                int [] nums = {1,3,5,6};
+        int[] nums = {1, 3, 5, 6};
 //        int[] nums = {1, 3, 5, 6, 12, 45, 56, 76, 78, 81, 83}; //, 85, 89, 91, 93, 95, 99};
 //        int[] nums = {1, 3, 5, 6};
         int pos = searchInsert(nums, 7);
-
         System.out.println("pos = " + pos);
-
     }
 
     public int searchInsert(int[] nums, int target) {
@@ -41,6 +38,5 @@ public class Solution {
 
         return left;
     }
-
 
 }
