@@ -17,7 +17,6 @@ public class Solution {
 
         int pos = strStr(haystack, needle);
         System.out.println(pos);
-
     }
 
     public int strStr(String haystack, String needle) {
