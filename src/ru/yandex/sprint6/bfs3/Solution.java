@@ -46,7 +46,7 @@ public class Solution {
             int vertexCount = Integer.parseInt(stz.nextToken());
             int edgeCount = Integer.parseInt(stz.nextToken());
 
-            Graph graph = new Graph(vertexCount + 1);
+            Graph graph = new Graph(vertexCount + 1, false);
 
             for (int i = 0; i < edgeCount; i++) {
                 StringTokenizer line = new StringTokenizer(reader.readLine());
@@ -55,7 +55,6 @@ public class Solution {
                 int to = Integer.parseInt(line.nextToken());
 
                 graph.addEdge(from, to);
-                graph.addEdge(to, from);
             }
 
             int start = Integer.parseInt(reader.readLine());
@@ -67,9 +66,11 @@ public class Solution {
 
 
 class Graph {
-    private final int vertexesCount;                      //number of nodes in the graph
-    private final TreeSet<Integer>[] adj;              //adjacency list
-    private final Queue<Integer> queue;                   //maintaining a queue
+    private final int vertexesCount;                   // число вершин
+    private final TreeSet<Integer>[] adj;              // список смежности
+    private final Queue<Integer> queue;                // очередь
+    private final boolean isOriented;                  // Ориентированность графа
+
 
     List<String> color;
     List<Integer> previous;
@@ -77,8 +78,9 @@ class Graph {
 
     Comparator<Integer> comparator = (o1, o2) -> o1-o2;
 
-    public Graph(int vertexes) {
+    public Graph(int vertexes, boolean isOriented) {
         this.vertexesCount = vertexes;
+        this.isOriented = isOriented;
 
         adj = new TreeSet[vertexes];
         for (int i = 0; i < vertexes; i++) {
@@ -94,7 +96,9 @@ class Graph {
 
     public void addEdge(int from, int to) {
         adj[from].add(to);
-        adj[to].add(from);
+        if (!isOriented) {
+            adj[to].add(from);
+        }
     }
 
     public void bfs(int s) {
