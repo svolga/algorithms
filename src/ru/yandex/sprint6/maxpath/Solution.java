@@ -59,49 +59,40 @@ public class Solution {
             int vertexCount = Integer.parseInt(stz.nextToken());
             int edgeCount = Integer.parseInt(stz.nextToken());
 
-            Graph graph = new Graph(vertexCount + 1);
+            Graph graph = new Graph(vertexCount + 1, false);
 
             for (int i = 0; i < edgeCount; i++) {
                 StringTokenizer line = new StringTokenizer(reader.readLine());
-
                 int from = Integer.parseInt(line.nextToken());
                 int to = Integer.parseInt(line.nextToken());
-
                 graph.addEdge(from, to);
-                graph.addEdge(to, from);
             }
 
             int start = Integer.parseInt(reader.readLine());
             graph.bfs(start);
 
-            int m = graph.maxPath();
-            System.out.println(m);
-
-
+            System.out.println(graph.maxPath());
         }
     }
 }
 
 class Graph {
-    private final int vertexesCount;                      //number of nodes in the graph
-    private final TreeSet<Integer>[] adj;              //adjacency list
-    private final Queue<Integer> queue;                   //maintaining a queue
+    private final TreeSet<Integer>[] adj;                 // Список смежности
+    private final boolean isOriented;                     // Ориентированность графа
 
     List<String> color;
     List<Integer> previous;
     List<Integer> distance;
 
-    Comparator<Integer> comparator = (o1, o2) -> o1 - o2;
+    Comparator<Integer> comparator = Comparator.comparingInt(o -> o);
 
-    public Graph(int vertexes) {
-        this.vertexesCount = vertexes;
+    public Graph(int vertexes, boolean isOriented) {
+        this.isOriented = isOriented;
 
         adj = new TreeSet[vertexes];
         for (int i = 0; i < vertexes; i++) {
             adj[i] = new TreeSet<>(comparator);
         }
-
-        queue = new LinkedList<>();
 
         color = new ArrayList<>(Collections.nCopies(vertexes, "white"));
         previous = new ArrayList<>(Collections.nCopies(vertexes, null));
@@ -110,7 +101,9 @@ class Graph {
 
     public void addEdge(int from, int to) {
         adj[from].add(to);
-        adj[to].add(from);
+        if (!isOriented) {
+            adj[to].add(from);
+        }
     }
 
     public void bfs(int s) {
@@ -137,33 +130,11 @@ class Graph {
         }
     }
 
-
     public int maxPath() {
         return distance.stream()
                 .filter(Objects::nonNull)
                 .max(Comparator.comparingInt(o -> o))
-                .get();
+                .orElse(0);
     }
-/*
-
-    public ArrayList<Integer> shortestPath(int v) {
-        // Класть вершины будем в стек, тогда
-        // стартовая вершина окажется наверху стека
-        // и порядок следования от s до v будет соответствовать
-        // порядку извлечения вершин из стека.
-        ArrayList<Integer> path = new ArrayList<>();
-        int currentVertex = v;
-
-        while (currentVertex != -1) {
-            // Предшественник вершины s равен -1.
-            path.add(currentVertex);
-            currentVertex = previous.get(currentVertex);
-        }
-
-        return path;
-    }
-
-*/
-
 }
 
