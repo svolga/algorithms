@@ -66,11 +66,8 @@ public class Solution {
 
 
 class Graph {
-    private final int vertexesCount;                   // число вершин
     private final TreeSet<Integer>[] adj;              // список смежности
-    private final Queue<Integer> queue;                // очередь
     private final boolean isOriented;                  // Ориентированность графа
-
 
     List<String> color;
     List<Integer> previous;
@@ -79,15 +76,12 @@ class Graph {
     Comparator<Integer> comparator = (o1, o2) -> o1-o2;
 
     public Graph(int vertexes, boolean isOriented) {
-        this.vertexesCount = vertexes;
         this.isOriented = isOriented;
 
         adj = new TreeSet[vertexes];
         for (int i = 0; i < vertexes; i++) {
             adj[i] = new TreeSet<>(comparator);
         }
-
-        queue = new LinkedList<>();
 
         color = new ArrayList<>(Collections.nCopies(vertexes, "white"));
         previous = new ArrayList<>(Collections.nCopies(vertexes, null));
