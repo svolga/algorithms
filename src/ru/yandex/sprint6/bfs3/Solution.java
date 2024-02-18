@@ -64,7 +64,6 @@ public class Solution {
 
 }
 
-
 class Graph {
     private final TreeSet<Integer>[] adj;              // список смежности
     private final boolean isOriented;                  // Ориентированность графа
@@ -73,7 +72,7 @@ class Graph {
     List<Integer> previous;
     List<Integer> distance;
 
-    Comparator<Integer> comparator = (o1, o2) -> o1-o2;
+    Comparator<Integer> comparator = Comparator.comparingInt(o -> o);
 
     public Graph(int vertexes, boolean isOriented) {
         this.isOriented = isOriented;
