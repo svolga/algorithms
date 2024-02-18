@@ -11,8 +11,8 @@ import java.util.Stack;
 
 // B. Железные дороги
 // https://contest.yandex.ru/contest/25070/problems/B/
-// Номер посылки: 107458498
-// Посылка: https://contest.yandex.ru/contest/25070/run-report/107458498/
+// Номер посылки: 107648508
+// Посылка: https://contest.yandex.ru/contest/25070/run-report/107648508/
 /*
 -- ПРИНЦИП РАБОТЫ --
     Составим список смежности для направленного графа по след. принципу:
@@ -41,7 +41,11 @@ import java.util.Stack;
     O(V+E)
 
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
-     O(E*V) - список смежности, для E - количество вершин, V - количество рёбер.
+     Граф представлен в виде списков смежности, для каждой вершины хранится список смежных с ней вершин.
+     Занимаемая память при таком способе хранения составляет O(V+E),
+     где E - количество вершин, V - количество рёбер.
+     Когда мы работаем с ориентированным графом, то объем задействованной памяти будет меньше,
+     чем при неориентированном (из-за отсутствия дублирования).
 */
 public class Solution {
 
@@ -72,20 +76,20 @@ class Road {
     private static final int BLACK = 2;
     private static final char ROAD_B = 'B';
     private static final char ROAD_R = 'R';
-    private final Map<Integer, List<Integer>> adj;
+    private final Map<Integer, List<Integer>> adjacency;
 
     public Road(int count) {
-        adj = new HashMap<>();
+        adjacency = new HashMap<>();
         for (int i = 0; i < count; i++) {
-            adj.put(i, new ArrayList<>());
+            adjacency.put(i, new ArrayList<>());
         }
     }
 
     public void add(char typeRoad, int i, int j) {
         if (typeRoad == ROAD_B) {
-            adj.get(i).add(i + j + 1);
+            adjacency.get(i).add(i + j + 1);
         } else if (typeRoad == ROAD_R) {
-            adj.get(i + j + 1).add(i);
+            adjacency.get(i + j + 1).add(i);
         }
     }
 
@@ -97,7 +101,7 @@ class Road {
             if (colors[v] == WHITE) {
                 colors[v] = GRAY;
                 stack.push(v);
-                for (int w : adj.get(v)) {
+                for (int w : adjacency.get(v)) {
                     if (colors[w] == WHITE) {
                         stack.push(w);
                     } else if (colors[w] == GRAY) {
@@ -112,8 +116,8 @@ class Road {
     }
 
     private boolean isCyclic() {
-        int[] colors = new int[adj.size()];
-        for (int i = 0; i < adj.size(); i++) {
+        int[] colors = new int[adjacency.size()];
+        for (int i = 0; i < adjacency.size(); i++) {
             if (dfsIsCyclic(i, colors)) {
                 return true;
             }
