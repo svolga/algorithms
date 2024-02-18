@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
 
 // A. Дорогая сеть
 // https://contest.yandex.ru/contest/25070/problems/A/
-// Номер посылки: 107459451
-// Посылка: https://contest.yandex.ru/contest/25070/run-report/107459451/
+// Номер посылки: 107648389
+// Посылка: https://contest.yandex.ru/contest/25070/run-report/107648389/
 /*
 -- ПРИНЦИП РАБОТЫ --
     Построим для неориентированного графа список смежности. Создадим класс Pair с вершиной и весом ребра.
@@ -23,7 +23,10 @@ import java.util.StringTokenizer;
 -- ВРЕМЕННАЯ СЛОЖНОСТЬ --
     O (E log E), где E - число ребер
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
-    O (V^2), где V - число вершин
+    Хранение списка смежности: O(E+V)
+    Хранение кучи: O(V)
+    E - количество ребер, V - количество вершин
+
 */
 public class Solution {
 
@@ -39,53 +42,53 @@ public class Solution {
             int vertexCount = Integer.parseInt(stz.nextToken());
             int edgeCount = Integer.parseInt(stz.nextToken());
 
-            Prima prima = new Prima(vertexCount);
+            MSTFinder mstFinder = new MSTFinder(vertexCount);
 
             for (int i = 0; i < edgeCount; i++) {
                 stz = new StringTokenizer(reader.readLine());
-                prima.add(
+                mstFinder.add(
                         Integer.parseInt(stz.nextToken()),
                         Integer.parseInt(stz.nextToken()),
                         Integer.parseInt(stz.nextToken())
                 );
             }
 
-            String weight = prima.getWeigth();
+            String weight = mstFinder.getWeigth();
             System.out.println(weight);
         }
     }
 
     private void test() {
 /*
-        Prima prima = new Prima(4, 4);
-        prima.add(1, 2, 5);
-        prima.add(1, 3, 6);
-        prima.add(2, 4, 8);
-        prima.add(3, 4, 3);
+        MSTFinder finder = new MSTFinder(4, 4);
+        finder.add(1, 2, 5);
+        finder.add(1, 3, 6);
+        finder.add(2, 4, 8);
+        finder.add(3, 4, 3);
 
-        int weight = prima.getWeigth();
+        int weight = finder.getWeigth();
         System.out.println(weight);
 */
     }
 }
 
-class Prima {
-    private final List<ArrayList<Pair>> adj;
+class MSTFinder {
+    private final List<ArrayList<Pair>> adjacency;
     private final int countVertex;
     private final static String OOPS_ADJ = "Oops! I did it again";
 
-    public Prima(int countVertex) {
+    public MSTFinder(int countVertex) {
         this.countVertex = countVertex + 1;
 
-        adj = new ArrayList<>();
+        adjacency = new ArrayList<>();
         for (int i = 0; i < this.countVertex; i++) {
-            adj.add(new ArrayList<>());
+            adjacency.add(new ArrayList<>());
         }
     }
 
     public void add(int from, int to, int key) {
-        adj.get(from).add(new Pair(to, key));
-        adj.get(to).add(new Pair(from, key));
+        adjacency.get(from).add(new Pair(to, key));
+        adjacency.get(to).add(new Pair(from, key));
     }
 
     public String getWeigth() {
@@ -97,16 +100,16 @@ class Prima {
         int weight = 0;
         while (!queue.isEmpty()) {
             Pair node = queue.poll();
-            int vertex = node.vertex;
+            int vertex = node.getVertex();
             if (visited[vertex] == 1)
                 continue;
 
-            int key = node.key;
+            int key = node.getKey();
             weight += key;
             visited[vertex] = 1;
-            for (Pair pair : adj.get(vertex)) {
-                if (visited[pair.vertex] == 0) {
-                    queue.add(new Pair(pair.vertex, pair.key));
+            for (Pair pair : adjacency.get(vertex)) {
+                if (visited[pair.getVertex()] == 0) {
+                    queue.add(new Pair(pair.getVertex(), pair.getKey()));
                 }
             }
         }
@@ -120,8 +123,16 @@ class Prima {
 }
 
 class Pair implements Comparable<Pair> {
-    int vertex;
-    int key;
+    private final int vertex;
+    private final int key;
+
+    public int getVertex() {
+        return vertex;
+    }
+
+    public int getKey() {
+        return key;
+    }
 
     Pair(int v, int key) {
         this.vertex = v;
