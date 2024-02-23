@@ -32,23 +32,28 @@ https://contest.yandex.ru/contest/23815/problems/
 https://contest.yandex.ru/contest/23991/problems/A/
 
 Финальные задачи><br>
-
+https://contest.yandex.ru/contest/24414/problems/A/
 
 **Спринт 5**
 
 Задачи:<br>
+https://contest.yandex.ru/contest/24809/problems/A/
 
 Финальные задачи><br>
+https://contest.yandex.ru/contest/24810/problems/A/
 
 **Спринт 6**
 
 Задачи:<br>
+https://contest.yandex.ru/contest/25069/problems/A/
 
 Финальные задачи><br>
+https://contest.yandex.ru/contest/25070/problems/A/
 
 **Спринт 7**
 
 Задачи:<br>
+https://contest.yandex.ru/contest/25596/problems/A/
 
 Финальные задачи><br>
 
