@@ -12,7 +12,7 @@ public class Solution {
         new Solution().run(args);
     }
 
-    private void run(String[] args) throws IOException {
+    public void run(String[] args) throws IOException {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             StringTokenizer stz = new StringTokenizer(reader.readLine());
