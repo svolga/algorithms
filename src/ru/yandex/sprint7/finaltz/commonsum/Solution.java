@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 // Посылка: https://contest.yandex.ru/contest/25597/run-report/113501933/
 /*
 -- ПРИНЦИП РАБОТЫ --
-  Псевдополиномиальный алгоритм из wikipedia: https://shorturl.at/fjHK7
+  Псевдополиномиальный алгоритм из wikipedia: https://clck.ru/3ATDbE
 
 -- ВРЕМЕННАЯ СЛОЖНОСТЬ --
     O (n*s), где n - размер массива, s - сумма элементов
