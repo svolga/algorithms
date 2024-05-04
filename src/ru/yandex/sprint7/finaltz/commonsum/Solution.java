@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 
 // B. Одинаковые суммы
 // https://contest.yandex.ru/contest/25597/problems/B/
-// Номер посылки: 108384878
-// Посылка: https://contest.yandex.ru/contest/25597/run-report/108384878/
+// Номер посылки: 113501933
+// Посылка: https://contest.yandex.ru/contest/25597/run-report/113501933/
 /*
 -- ПРИНЦИП РАБОТЫ --
   Псевдополиномиальный алгоритм из wikipedia: https://shorturl.at/fjHK7
