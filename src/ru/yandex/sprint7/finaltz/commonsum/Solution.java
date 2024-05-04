@@ -18,7 +18,7 @@ import java.util.stream.Stream;
     O (n*s), где n - размер массива, s - сумма элементов
 
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
-    Создается динамический массив размера n+1, s/2+1, сложность O(n*s)
+    Создается динамический массив размера s/2+1, сложность O(s)
 */
 public class Solution {
 
@@ -50,35 +50,29 @@ public class Solution {
 
     public boolean canSplit(int[] nums) {
         int sum = Arrays.stream(nums).sum();
+
         if (sum % 2 != 0) {
             return false;
         }
 
         sum /= 2;
-        boolean[][] dp = new boolean[nums.length + 1][sum + 1];
-        for (int i = 0; i < nums.length + 1; i++) {
-            dp[i][0] = true;
-        }
 
-        for (int i = 1; i < nums.length + 1; i++) {
-            for (int j = 1; j < sum + 1; j++) {
-                if (nums[i - 1] <= j) {
-                    dp[i][j] = dp[i - 1][j - nums[i - 1]] || dp[i - 1][j];
-                } else {
-                    dp[i][j] = dp[i - 1][j];
+        boolean[] dp = new boolean[sum + 1];
+        dp[0] = true;
+
+        for (int j : nums) {
+            for (int i = sum; i > 0; i--) {
+                if (i >= j) {
+                    dp[i] = dp[i] || dp[i - j];
                 }
             }
         }
-        return dp[nums.length][sum];
+
+        return dp[sum];
     }
 
     private void test() {
         int[] nums = {1, 5, 7, 1, 2};
-//        int[] nums = {1, 5, 7, 1};
-//        int[] nums = {2, 10, 9, 1};
-//        Integer[] nums = {1 , 2 , 3 , 4 , 5 , 5};
-//        List<Integer> list = Arrays.asList(nums);
-
         boolean result = canSplit(nums);
         System.out.println("result = " + result);
     }
