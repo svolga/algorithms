@@ -8,8 +8,8 @@ import java.util.Deque;
 
 // A. Packed Prefix
 // https://contest.yandex.ru/contest/26133/problems/A/
-// Номер посылки: 113587143
-// Посылка: https://contest.yandex.ru/contest/26133/run-report/113587143/
+// Номер посылки: 113872968
+// Посылка: https://contest.yandex.ru/contest/26133/run-report/113872968/
 /*
 -- ПРИНЦИП РАБОТЫ --
     Распарсим строки в привычный вид. Первую строку примем за префикс. В цикле по списку слов находим новый префикс
@@ -17,6 +17,9 @@ import java.util.Deque;
 
 -- ВРЕМЕННАЯ СЛОЖНОСТЬ --
     O(n x L), где L - максимальная длина строки, n - кол-во строк
+    Длина строки после распаковки не превышает 10^5, сложность распаковки составляет O(m), где m - длина строки.
+    Для того, чтобы избежать множественного создания новых обьектов при повторах символов используется
+    mutable класс StringBuilder вместо immutable String (строки 75 и 82).
 
 -- ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ --
     O (L), где L - максимальная длина строки
@@ -65,12 +68,19 @@ public class Solution {
                 continue;
             }
             if (c == RIGHT_BRACKET) {
+                int count = repeatedElements.pop();
                 if (letters.size() == 1) {
-                    result.append(letters.pop().toString().repeat(repeatedElements.pop()));
+                    String letter = letters.pop().toString();
+                    for (int i = 0; i < count; i++) {
+                        result.append(letter);
+                    }
                     continue;
                 }
+
                 String previous = letters.pop().toString();
-                letters.peek().append(previous.repeat(repeatedElements.pop()));
+                for (int i = 0; i < count; i++) {
+                    letters.peek().append(previous);
+                }
                 continue;
             }
             if (letters.isEmpty()) {
