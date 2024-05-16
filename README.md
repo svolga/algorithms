@@ -66,19 +66,22 @@ https://contest.yandex.ru/contest/26131/problems/A/
 Финальные задачи><br>
 https://contest.yandex.ru/contest/26133/problems/A/
 
-````
-Полезные ресурсы: <br>
-Подготовка к собеседованиям
+
+**Полезные ресурсы:** <br>
+**Подготовка к собеседованиям**
 https://contest.yandex.ru/contest/34147/problems/
 
-Яндекс Алгоритм:
+**Яндекс Алгоритм:**
 https://yandex.ru/cup/algorithm/
 
-Leetcode:
+**Leetcode:**
 https://leetcode.com/
 
-Codeforces
+**Codeforces**
 https://codeforces.com/
 
-Codewars
+**Codewars**
 https://www.codewars.com/
+
+
+````
