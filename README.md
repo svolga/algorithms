@@ -67,7 +67,7 @@ https://contest.yandex.ru/contest/26131/problems/A/
 https://contest.yandex.ru/contest/26133/problems/A/
 
 
-#Полезные ресурсы: <br><br>
+# Полезные ресурсы: <br><br>
 **Подготовка к собеседованиям**
 https://contest.yandex.ru/contest/34147/problems/
 
