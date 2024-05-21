@@ -63,7 +63,7 @@ https://contest.yandex.ru/contest/25597/problems/A/
 Задачи:<br>
 https://contest.yandex.ru/contest/26131/problems/A/
 
-Финальные задачи><br>
+Финальные задачи<br>
 https://contest.yandex.ru/contest/26133/problems/A/
 
 <br>
