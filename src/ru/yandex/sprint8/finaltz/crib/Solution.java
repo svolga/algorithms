@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 // B. Шпаргалка
-// https://contest.yandex.ru/contest/26133/problems/B/
-// Номер посылки: 113654399
-// Посылка: https://contest.yandex.ru/contest/26133/run-report/113654399/
+// https://contest.yandex.ru/contest/26133/run-report/113778842/
+// Номер посылки: 113778842
+// Посылка: https://contest.yandex.ru/contest/26133/run-report/113778651/
 /*
 -- ПРИНЦИП РАБОТЫ --
   1.  Создадим префиксное дерево на основе класс Node. Хранить переходы по ребрам будем в списке ребер.
@@ -41,26 +41,18 @@ public class Solution {
             for (int i = 0; i < n; i++) {
                 words.add(reader.readLine());
             }
-/*
-            String text = "abacaba";
-            List<String> words = List.of("abac", "caba", "aba");
-*/
-/*
-            String text = "examiwillpasstheexam";
-            List<String> words = List.of("will", "pass", "the", "exam", "i");
-*/
             System.out.println(canSplit(text, words) ? "YES" : "NO");
         }
     }
 
-    public static Node createTrie(List<String> words) {
+    public Node createTrie(List<String> words) {
         Node root = new Node(' ', new HashMap<>());
 
         for (String word : words) {
             Node node = root;
             for (char c : word.toCharArray()) {
-                node.next.putIfAbsent(c, new Node(c, new HashMap<>()));
-                node = node.next.get(c);
+                node.updateNext(c, new Node(c, new HashMap<>()));
+                node = node.getNextByKey(c);
             }
             node.terminal = true;
         }
@@ -68,7 +60,7 @@ public class Solution {
         return root;
     }
 
-    public static boolean canSplit(String input, List<String> words) {
+    public boolean canSplit(String input, List<String> words) {
         Node root = createTrie(words);
         boolean[] dp = new boolean[input.length() + 1];
         dp[0] = true;
@@ -81,27 +73,40 @@ public class Solution {
                         dp[j] = true;
                     }
 
-                    if (j == input.length() || !node.next.containsKey(input.charAt(j))) {
+                    if (j == input.length() || !node.isNextContainsKey(input.charAt(j))) {
                         break;
                     }
-                    node = node.next.get(input.charAt(j));
+                    node = node.getNextByKey(input.charAt(j));
                 }
             }
         }
 
         return dp[input.length()];
     }
-}
 
-class Node {
-    char value;
-    Map<Character, Node> next;
-    boolean terminal;
 
-    public Node(char value, Map<Character, Node> next) {
-        this.value = value;
-        this.next = next;
-        this.terminal = false;
+    static class Node {
+        private char value;
+        private final Map<Character, Node> next;
+        private boolean terminal;
+
+        public Node(char value, Map<Character, Node> next) {
+            this.value = value;
+            this.next = next;
+            this.terminal = false;
+        }
+
+        public boolean isNextContainsKey(char key) {
+            return next.containsKey(key);
+        }
+
+        public Node getNextByKey(char value) {
+            return next.get(value);
+        }
+
+        public void updateNext(char value, Node node) {
+            next.putIfAbsent(value, new Node(value, new HashMap<>()));
+        }
     }
 }
 
