@@ -1,4 +1,4 @@
-package java.leetcode.recursion.lettercombinations;
+package leetcode.recursion.lettercombinations;
 
 import java.util.ArrayList;
 import java.util.List;
