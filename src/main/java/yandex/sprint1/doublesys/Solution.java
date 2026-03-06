@@ -1,4 +1,4 @@
-package java.yandex.sprint1.doublesys;
+package yandex.sprint1.doublesys;
 
 import java.io.BufferedReader;
 import java.io.IOException;

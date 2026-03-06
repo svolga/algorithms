@@ -1,4 +1,4 @@
-package java.yandex.sprint1.factoriz;
+package yandex.sprint1.factoriz;
 
 import java.io.BufferedReader;
 import java.io.IOException;
