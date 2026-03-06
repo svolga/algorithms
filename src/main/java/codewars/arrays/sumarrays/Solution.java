@@ -1,4 +1,4 @@
-package java.codewars.arrays.sumarrays;
+package codewars.arrays.sumarrays;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package java.leetcode.dp.pascaltriange2;
+package leetcode.dp.pascaltriange2;
 
 import java.util.ArrayList;
 import java.util.List;

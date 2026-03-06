@@ -1,4 +1,4 @@
-package java.yandex.sprint7.changemoney;
+package yandex.sprint7.changemoney;
 
 import java.io.BufferedReader;
 import java.io.IOException;

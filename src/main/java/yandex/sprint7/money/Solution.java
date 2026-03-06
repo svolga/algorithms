@@ -1,4 +1,4 @@
-package java.yandex.sprint7.money;
+package yandex.sprint7.money;
 
 import java.io.BufferedReader;
 import java.io.IOException;

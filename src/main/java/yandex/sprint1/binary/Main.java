@@ -1,4 +1,4 @@
-package java.yandex.sprint1.binary;
+package yandex.sprint1.binary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
