@@ -26,7 +26,7 @@ public class Main {
     }
 
     private void testing(int actual, int expected) {
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
