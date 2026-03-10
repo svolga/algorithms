@@ -38,9 +38,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             String[] line1 = lines[i].split(" ");
             int[] row = Arrays.stream(line1).mapToInt(Integer::parseInt).toArray();
-            for (int j = 0; j < K; j++) {
-                matrix[i][j] = row[j];
-            }
+            System.arraycopy(row, 0, matrix[i], 0, K);
         }
 
         int count = printMatrix(matrix, N, K);
