@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Solution {
     public String interpret(String command) {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("G", "G");
         map.put("()", "o");
         map.put("(al)", "al");
