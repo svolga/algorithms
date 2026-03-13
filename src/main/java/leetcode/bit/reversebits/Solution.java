@@ -1,4 +1,4 @@
-package java.leetcode.bit.reversebits;
+package leetcode.bit.reversebits;
 
 // 190. Reverse Bits
 // https://leetcode.com/problems/reverse-bits/
