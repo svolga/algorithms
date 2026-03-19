@@ -55,8 +55,6 @@ public class Main {
 
         int rest = getLength(N, K, nums);
         System.out.println(rest);
-
-
     }
 
     private static int getLength(int N, int K, int[] nums) {

@@ -22,7 +22,7 @@ public class Solution {
         }
 
         int count = 0;
-        Boolean isOdd = false;
+        boolean isOdd = false;
         for (Integer value : map.values()) {
             count += (value / 2) * 2;
 
