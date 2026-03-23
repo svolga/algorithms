@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 496. Next Greater Element I
