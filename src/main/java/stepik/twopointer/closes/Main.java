@@ -80,7 +80,7 @@ public class Main {
         int M = Integer.parseInt(br.readLine());
         String[] line2 = br.readLine().split(" ");
         int[] nums2 = Arrays.stream(line2).mapToInt(Integer::parseInt).toArray();
-        
+
         int minDiff = Integer.MAX_VALUE;
         int i = 0;
         int j = 0;
@@ -100,7 +100,7 @@ public class Main {
             }
         }
 
-        System.out.println(String.format("%d %d", result[0], result[1]));
+        System.out.printf("%d %d%n", result[0], result[1]);
     }
 
 }
