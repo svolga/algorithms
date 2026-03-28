@@ -71,7 +71,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
- /*       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
         String[] line1 = br.readLine().split(" ");
@@ -80,19 +80,7 @@ public class Main {
         int M = Integer.parseInt(br.readLine());
         String[] line2 = br.readLine().split(" ");
         int[] nums2 = Arrays.stream(line2).mapToInt(Integer::parseInt).toArray();
-*/
-        /*
-        int N = 19;
-        int[] nums1 = new int[]{5, 8, 9, 16, 20, 22, 40, 44, 51, 55, 56, 58, 65, 66, 73, 75, 76, 78, 85};
-        int M = 18;
-        int[] nums2 = new int[]{32, 37, 40, 48, 50, 53, 56, 60, 65, 66, 67, 69, 71, 79, 83, 90, 97, 99};
-*/
-
-        int N = 2;
-        int[] nums1 = new int[]{3, 4};
-        int M = 3;
-        int[] nums2 = new int[]{1, 2, 3};
-
+        
         int minDiff = Integer.MAX_VALUE;
         int i = 0;
         int j = 0;
