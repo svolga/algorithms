@@ -34,7 +34,7 @@ public class Solution {
 
     @Test
     public void test() {
-//        testing(findMaxAverage(new int[]{1, 12, -5, -6, 50, 3}, 4), 12.75000);
+        testing(findMaxAverage(new int[]{1, 12, -5, -6, 50, 3}, 4), 12.75000);
         testing(findMaxAverage(new int[]{5}, 1), 5.00000);
 
     }
