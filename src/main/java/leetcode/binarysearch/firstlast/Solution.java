@@ -2,10 +2,7 @@ package leetcode.binarysearch.firstlast;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 34. Find First and Last Position of Element in Sorted Array
